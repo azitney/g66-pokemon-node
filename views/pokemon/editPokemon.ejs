@@ -1,0 +1,44 @@
+<!-- DO NOT TOUCH LINE 3 ! This imports our HTML layout-->
+<!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
+<%- contentFor('body') %>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>
+
+<span style="color:white">Edit Pokemon:</span>
+<div class="section">
+  <div class="container">
+    <form action="/editPokemon/<%=pokemon.id%>" method="post">
+
+          <input class="white-text" type="text" name="name" value="<%=pokemon.name%>">
+
+        <select class="white-text" name="trainer_id">
+          <%for(let i = 0; i < trainers.length; i++){%>
+            <%if(pokemon.trainer_id === trainers[i].id){%>
+              <option selected value="<%=trainers[i].id%>"><%=trainers[i].name%></option>
+            <%} else{%>
+              <option value="<%=trainers[i].id%>"><%=trainers[i].name%></option>
+            <%}%>
+          <%}%>
+        </select>
+        <select class="white-text" name="in_gym">
+          <%if(pokemon.in_gym){%>
+            <option selected value="true">Yes</option>
+            <option value="false">No</option>
+          <%}else{%>
+            <option value="true">Yes</option>
+            <option selected value="false">No</option>
+          <%}%>
+
+        </select>
+          <input type="integer" name="cp" value="<%=pokemon.cp%>">
+<br>
+<br>
+    <input type="submit">
+    </form>
+  </div>
+
+</div>

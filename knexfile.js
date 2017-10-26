@@ -1,7 +1,7 @@
 module.exports = {
   development: {
       client: 'pg',
-      connection: 'postgres://localhost/false',
+      connection: 'postgres://localhost/pokemonnode',
       migrations: {
           directory: __dirname + '/db/migrations',
         },

@@ -6,13 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 8000;
 
-var routes = require('./routes/index');
-var trainers = require('./routes/trainers');
-var pokemon = require('./routes/pokemon');
 
 
 var app = express();
 var expressLayouts = require('express-ejs-layouts');
+
+require('./config/session.js')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,10 +28,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/trainers', trainers);
-app.use('/pokemon', pokemon);
 
+var routes_setter = require('./config/routes.js');
+routes_setter(app);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

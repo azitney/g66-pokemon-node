@@ -1,0 +1,34 @@
+<!-- DO NOT TOUCH LINE 3 ! This imports our HTML layout-->
+<!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
+<%- contentFor('body') %>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>
+
+<span style="color:white">Add Pokemon:</span>
+<div class="section">
+  <div class="container">
+    <form action="/addPokemon" method="post">
+
+          <input type="text" name="name" placeholder="Name">
+
+        <select class="white-text" name="trainer_id">
+          <%for(let i = 0; i < trainers.length; i++){%>
+            <option value="<%=trainers[i].id%>"><%=trainers[i].name%></option>
+          <%}%>
+        </select>
+        <select class="white-text" name="in_gym">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+          <input type="integer" name="cp" placeholder="CP">
+<br>
+<br>
+    <input type="submit">
+    </form>
+  </div>
+
+</div>

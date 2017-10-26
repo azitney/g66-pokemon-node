@@ -3,16 +3,54 @@
 <%- contentFor('body') %>
 
 <span style="color:white">Pokemón home page.</span>
+<div class="section">
+  <div class="container">
+    <table class="white-text">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>name</th>
+          <th>Trainer ID</th>
+          <th>CP</th>
+          <th>In Gym</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 0; i < pokemon.length; i++){ %>
+          <tr>
+            <td><%= pokemon[i].id %></td>
+            <td><a href="/pokemonProfile/<%=pokemon[i].id%>"><%= pokemon[i].name %></a></td>
+            <td><%= pokemon[i].trainer_id %></td>
+            <td><%= pokemon[i].cp %></td>
+            <td><%= pokemon[i].in_gym %></td>
+            <td><a href="#">Assign To Gym</a></td>
+            <td><a href="/editPokemon/<%=pokemon[i].id%>">Edit</a></td>
+            <td><a href="/deletePokemon/<%=pokemon[i].id%>">Delete</a></td>
+          </tr>
+        <% } %>
+
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
 
 
 
-<button type="button" name="button" id="add_new">+ Add New Pokemon</button>
+<a href="/addPokemon">Add New Pokemon</a>
+
+
+
+<!-- <button type="button" name="button" id="add_new">+ Add New Pokemon</button>
 
 <script type="text/javascript">
    var btn = document.getElementById("add_new");
-   var passedInData = '<%= passedInData %>' ;
    btn.addEventListener("click", function(){
-     alert("the button works, and we see "+passedInData);
+
    })
 
-</script>
+</script> -->

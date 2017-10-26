@@ -1,0 +1,21 @@
+<!-- DO NOT TOUCH LINE 3 ! This imports our HTML layout-->
+<!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
+<%- contentFor('body') %>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>
+
+<span style="color:white">Pokemon Profile</span>
+<div class="section">
+  <div class="container">
+    <h3 class="white-text"><%=pokemon.name%></h3>
+    <p class="white-text">Trainer: <%=pokemon.trainersname%></p>
+    <p class="white-text">CP: <%=pokemon.cp%></p>
+    <p class="white-text">In Gym: <%=pokemon.in_gym%></p>
+
+  </div>
+
+</div>
