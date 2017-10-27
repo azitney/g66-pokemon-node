@@ -4,16 +4,16 @@
 
 
 
-<div class="section">
-  <div class="container">
+<div class="section grey lighten-1">
+  <div class="container center-align ">
     <%if(message === "TIE!"){%>
-      <h3 class="white-text"><%=pokemon[0].name%> and <%=pokemon[1].name%> <%=message%></h3>
+      <h3><%=pokemon[0].name%> and <%=pokemon[1].name%> <%=message%></h3>
 
     <%}else{%>
-      <h3 class="white-text"><%=pokemon.name%> is the <%=message%></h3>
+      <h3><%=pokemon.name%> is the <%=message%></h3>
     <%}%>
 
-    <a href="/restart">Restart</a>
+    <a class="btn deep-orange darken-4" href="/restart">Restart</a>
 
   </div>
 
