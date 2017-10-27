@@ -5,19 +5,26 @@
 <span style="color:white">Pokemón home page.</span>
 <div class="section">
   <div class="container">
-    <h3 class="white-text">Trainers:</h3>
+    <h3 class="white-text"><%=trainer.name%></h3>
     <table class="white-text">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>name</th>
+          <th>Name</th>
+          <th>CP</th>
+          <th>In Gym</th>
         </tr>
       </thead>
       <tbody>
-        <% for(let i = 0; i < trainers.length; i++){ %>
+        <% for(let i = 0; i < pokemon.length; i++){ %>
           <tr>
-            <td><%= trainers[i].id %></td>
-            <td><a href="/trainerProfile/<%=trainers[i].id%>"><%= trainers[i].name %></a></td>
+            <td><%= pokemon[i].name %></td>
+            <td><%= pokemon[i].cp%></td>
+            <% if(pokemon[i].in_gym){%>
+              <td>Yes</td>
+            <%}else{%>
+                <td>No</td>
+            <%}%>
+
           </tr>
         <% } %>
 

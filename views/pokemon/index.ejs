@@ -25,8 +25,24 @@
             <td><a href="/pokemonProfile/<%=pokemon[i].id%>"><%= pokemon[i].name %></a></td>
             <td><%= pokemon[i].trainer_id %></td>
             <td><%= pokemon[i].cp %></td>
-            <td><%= pokemon[i].in_gym %></td>
-            <td><a href="#">Assign To Gym</a></td>
+            <%if(pokemon[i].in_gym){%>
+              <td>Yes</td>
+            <%}else{%>
+              <td>No</td>
+            <%}%>
+            <%if(open === "yes"){%>
+            <%if(pokemon[i].in_gym){%>
+              <td><a href="/inGymPokemon/<%=pokemon[i].id%>/<%=pokemon[i].in_gym%>">Remove From Gym</a></td>
+            <%}else{%>
+              <td><a href="/inGymPokemon/<%=pokemon[i].id%>/<%=pokemon[i].in_gym%>">Assign To Gym</a></td>
+            <%}%>
+            <%}else{%>
+              <%if(pokemon[i].in_gym){%>
+                <td><a href="/inGymPokemon/<%=pokemon[i].id%>/<%=pokemon[i].in_gym%>">Remove From Gym</a></td>
+                <%}else{%>
+                  <td></td>
+                <%}%>
+            <%}%>
             <td><a href="/editPokemon/<%=pokemon[i].id%>">Edit</a></td>
             <td><a href="/deletePokemon/<%=pokemon[i].id%>">Delete</a></td>
           </tr>

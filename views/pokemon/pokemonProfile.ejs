@@ -14,7 +14,12 @@
     <h3 class="white-text"><%=pokemon.name%></h3>
     <p class="white-text">Trainer: <%=pokemon.trainersname%></p>
     <p class="white-text">CP: <%=pokemon.cp%></p>
-    <p class="white-text">In Gym: <%=pokemon.in_gym%></p>
+    <%if(pokemon.in_gym){%>
+      <p class="white-text">In Gym: Yes</p>
+    <%}else{%>
+      <p class="white-text">In Gym: No</p>
+    <%}%>
+
 
   </div>
 
