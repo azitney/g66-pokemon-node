@@ -1,0 +1,6 @@
+{
+  "name": "Pokemon Node",
+  "description": "Q2 project",
+  "repository": "https://github.com/azitney/g66-pokemon-node",
+  "keywords": ["node", "express", "heroku"],
+}
