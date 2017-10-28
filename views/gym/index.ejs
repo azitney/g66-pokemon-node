@@ -16,7 +16,8 @@
       <div class="col s6 m6">
         <h3 class="white-text">Player One:</h3>
         <%if(playerone != 'no'){%>
-          <p class="white-text">Name: <%=playerone.name%></p>
+          <p class="white-text"><%=playerone.name%></p>
+          <img class="pokemonPic" src="<%=playerone.pic_url%>">
           <p class="white-text">CP: <%=playerone.cp%></p>
         <%}else{%>
           <form action="/addToGym/one" method="post">
@@ -36,7 +37,8 @@
       <div class="col s6 m6">
         <h3 class="white-text">Player Two:</h3>
         <%if(playertwo != 'no'){%>
-          <p class="white-text">Name: <%=playertwo.name%></p>
+          <p class="white-text"><%=playertwo.name%></p>
+          <img class="pokemonPic" src="<%=playertwo.pic_url%>">
           <p class="white-text">CP: <%=playertwo.cp%></p>
       <%}else{%>
         <form action="/addToGym/two" method="post">

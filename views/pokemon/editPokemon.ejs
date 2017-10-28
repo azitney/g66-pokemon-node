@@ -14,6 +14,7 @@
     <form action="/editPokemon/<%=pokemon.id%>" method="post">
 
           <input class="white-text" type="text" name="name" value="<%=pokemon.name%>">
+            <input class="white-text" type="text" name="pic_url" value="<%=pokemon.pic_url%>">
 
         <select class="white-text" name="trainer_id">
           <%for(let i = 0; i < trainers.length; i++){%>
@@ -32,7 +33,7 @@
           <%}%>
 
         </select>
-          <input type="integer" name="cp" value="<%=pokemon.cp%>">
+          <input class="black-text" type="integer" name="cp" value="<%=pokemon.cp%>">
 <br>
 <br>
     <input class="btn deep-orange darken-4" type="submit">

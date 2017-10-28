@@ -25,7 +25,16 @@ a img{
 
 table{
   border-radius: 5px;
-  background-color: rgba(128,128,128,0.7); 
+  background-color: rgba(128,128,128,0.7);
+}
+
+input, select, textarea{
+    color: white;
+}
+
+.pokemonPic {
+  width: 250px;
+  height: 250px;
 }
 
 ::-moz-selection {
@@ -317,7 +326,8 @@ table{
   position: relative;
   background: url('/images/ball_background_opaque.png') center top no-repeat;
   background-size: cover;
-  height: 800px;
+  min-height: 800px;
+  height: 80%;
 }
 
 .pokemon-wear-band {

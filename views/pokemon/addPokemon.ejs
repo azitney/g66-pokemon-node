@@ -14,6 +14,7 @@
     <form action="/addPokemon" method="post">
 
           <input type="text" name="name" placeholder="Name">
+          <input type="text" name="pic_url" placeholder="Picture URL">
 
         <select class="white-text" name="trainer_id">
           <option selected value="">Select Trainer</option>
@@ -21,7 +22,7 @@
             <option value="<%=trainers[i].id%>"><%=trainers[i].name%></option>
           <%}%>
         </select>
-          <input type="integer" name="cp" value="CP">
+          <input class="black-text"type="integer" name="cp" value="CP">
 <br>
 <br>
     <input class="btn deep-orange darken-4" type="submit">

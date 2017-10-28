@@ -4,6 +4,8 @@ module.exports = {
 
   index: function(req, res) {
     knex('pokemon')
+    .join('trainers', 'trainers.id', '=', 'pokemon.trainer_id')
+    .select('pokemon.id', 'pokemon.name', 'pokemon.cp', 'pokemon.in_gym', 'trainers.name as trainersname')
       .then((result) => {
         if (req.session.playerone && req.session.playertwo) {
           res.render('pokemon/index', {
@@ -23,9 +25,10 @@ module.exports = {
   getOne: function(req, res) {
     knex('pokemon')
       .join('trainers', 'trainers.id', '=', 'pokemon.trainer_id')
-      .select('pokemon.name', 'pokemon.cp', 'pokemon.in_gym', 'trainers.name as trainersname')
+      .select('pokemon.name', 'pokemon.cp', 'pokemon.in_gym', 'trainers.name as trainersname', 'pokemon.pic_url')
       .where('pokemon.id', req.params.id)
       .then((result) => {
+        console.log(result)
         res.render('pokemon/pokemonProfile', {
           pokemon: result[0]
         })
@@ -48,7 +51,8 @@ module.exports = {
         name: req.body.name,
         trainer_id: req.body.trainer_id,
         cp: req.body.cp,
-        in_gym: false
+        in_gym: false,
+        pic_url: req.body.pic_url
       }, "*")
       .then((result) => {
         res.redirect('pokemon');
@@ -64,16 +68,14 @@ module.exports = {
       .del()
       .where('id', req.params.id)
       .then(() => {
-        if(req.session.playerone){
+        if(req.session.playerone || req.session.playertwo){
           if(req.session.playerone.id == req.params.id){
             delete req.session.playerone
             req.session.save(()=>{
               res.redirect('/pokemon')
             })
           }
-        }
-        else if(req.session.playertwo){
-          if(req.session.playertwo.id == req.params.id){
+          else if(req.session.playertwo.id == req.params.id){
             delete req.session.playertwo
             req.session.save(()=>{
               res.redirect('/pokemon')
@@ -179,12 +181,16 @@ module.exports = {
             .then((result) => {
               if (req.session.playerone) {
                 req.session.playertwo = result[0]
+                req.session.save(()=>{
+                  res.redirect('/pokemon');
+                })
               } else {
                 req.session.playerone = result[0]
+                req.session.save(()=>{
+                  res.redirect('/pokemon');
+                })
               }
-              req.session.save(()=>{
-                res.redirect('/pokemon');
-              })
+
 
             })
         })
